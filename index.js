@@ -1,6 +1,10 @@
 const gang = require("express");
 
-console.log("backend.gang is running on port");
+gang.listen(3551, () => {
+    console.log(`[BACKEND] Gang gang on port 3551`);
+}).on("error", async (err) => {
+    throw err;
+});
 
 // error 1day
 gang.use((req, res, next) => {
