@@ -5,7 +5,7 @@ function backend() {
         msg += `${i == "0" ? "" : " "}${backend.arguments[i]}`;
     }
 
-    console.log(`\x1b[32m[BACKEND]\x1b[0m ${msg}`);
+    console.log(`\x1b[32m[BACKEND]\x1b[90m ${msg}`);
 }
 
 function bot() {
@@ -15,7 +15,7 @@ function bot() {
         msg += `${i == "0" ? "" : " "}${bot.arguments[i]}`;
     }
 
-    console.log(`\x1b[33m[DISCORD]\x1b[0m ${msg}`);
+    console.log(`\x1b[33m[DISCORD]\x1b[90m ${msg}`);
 }
 
 function xmpp() {
@@ -25,7 +25,7 @@ function xmpp() {
         msg += `${i == "0" ? "" : " "}${xmpp.arguments[i]}`;
     }
 
-    console.log(`\x1b[34m[XMPP]\x1b[0m ${msg}`);
+    console.log(`\x1b[34m[XMPP]\x1b[90m ${msg}`);
 }
 
 function error() {
@@ -35,7 +35,7 @@ function error() {
         msg += `${i == "0" ? "" : " "}${error.arguments[i]}`;
     }
 
-    console.log(`\x1b[31m[ERROR]\x1b[0m ${msg}`);
+    console.log(`\x1b[31m[ERROR]\x1b[90m ${msg}`);
 }
 
 function mongo() {
@@ -45,7 +45,7 @@ function mongo() {
         msg += `${i == "0" ? "" : " "}${mongo.arguments[i]}`;
     }
 
-    console.log(`\x1b[35m[MONGO]\x1b[0m ${msg}`);
+    console.log(`\x1b[35m[MONGO]\x1b[90m ${msg}`);
 }
 
 function endpoint() {
@@ -55,7 +55,7 @@ function endpoint() {
         msg += `${i == "0" ? "" : " "}${endpoint.arguments[i]}`;
     }
 
-    console.log(`\x1b[36m[MISSING ENDPOINT]\x1b[0m ${msg}`);
+    console.log(`\x1b[36m[MISSING ENDPOINT]\x1b[90m ${msg}`);
 }
 
 module.exports = {
