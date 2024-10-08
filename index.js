@@ -23,6 +23,12 @@ gang.use((req, res, next) => {
         return res.status(403).send('bomb');
     }
 
+    // crazy lazy
+    if (req.originalUrl === '/favicon.ico') {
+        next(); 
+        return res.status(403).send('another bomb');
+    }
+
     const missingEndpoint = req.originalUrl; 
     const msg = `[MISSING ENDPOINT] ${missingEndpoint}\n`; 
     const endpointLog = path.join(__dirname, 'logs', 'missing_endpoints.log'); 
