@@ -58,11 +58,34 @@ function endpoint() {
     console.log(`\x1b[36m[MISSING ENDPOINT]\x1b[90m ${msg}`);
 }
 
+function route() {
+    let msg = "";
+
+    for (let i in route.arguments) {
+        msg += `${i == "0" ? "" : " "}${route.arguments[i]}`;
+    }
+
+    console.log(`\x1b[37m[ROUTE]\x1b[90m ${msg}`);
+}
+
+function exploit() {
+    let msg = "";
+
+    for (let i in exploit.arguments) {
+        msg += `${i == "0" ? "" : " "}${exploit.arguments[i]}`;
+    }
+
+    console.log(`\x1b[33m[EXPLOIT]\x1b[90m ${msg}`);
+}
+
+
 module.exports = {
     backend,
     bot,
     xmpp,
     error,
     mongo,
-    endpoint
+    endpoint,
+    route,
+    exploit
 }
