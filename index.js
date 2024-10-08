@@ -3,6 +3,7 @@ const gang = Express();
 const path = require("path")
 const fs = require("fs")
 const log = require("./Other/log.js");
+const handleMissingEndpoint = require('./Other/error.js'); 
 
 
 gang.listen(3551, () => {
@@ -19,30 +20,15 @@ gang.use((req, res, next) => {
 
     if (req.originalUrl === '/') {
         next(); 
-        return res.status(403).send(`bomb`);
-        return;
+        return res.status(403).send('bomb');
     }
 
-    const missiinngendpoint = req.originalUrl; 
-    const msg = `[MISSING ENDPOINT] ${missiinngendpoint}\n`; 
-    const endpointlog = path.join(__dirname, 'logs', 'missing_endpoints.log'); 
+    const missingEndpoint = req.originalUrl; 
+    const msg = `[MISSING ENDPOINT] ${missingEndpoint}\n`; 
+    const endpointLog = path.join(__dirname, 'logs', 'missing_endpoints.log'); 
 
-    fs.appendFileSync(endpointlog, msg);
-    log.endpoint(`${missiinngendpoint}`);
+    fs.appendFileSync(endpointLog, msg); 
+    log.endpoint(`${missingEndpoint}`); 
 
-    var XEpicErrorName = "errors.com.nade.common.not_found";
-    var XEpicErrorCode = 1004;
-
-    res.set({
-        'X-Epic-Error-Name': XEpicErrorName,
-        'X-Epic-Error-Code': XEpicErrorCode
-    });
-
-    res.status(404).json({
-        "errorCode": XEpicErrorName,
-        "errorMessage": "Endpoint not found? Make a ticket in the support server!",
-        "numericErrorCode": XEpicErrorCode,
-        "originatingService": "any",
-        "intent": "prod"
-    });
+    handleMissingEndpoint(req, res);
 });
